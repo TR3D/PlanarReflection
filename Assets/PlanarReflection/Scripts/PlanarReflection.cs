@@ -57,14 +57,14 @@ public class PlanarReflection : ScriptableRendererFeature
                 // Should only run once as opposed to ReAllocateIfNeeded
                 if (rtColorHandle == null)
                 {
-                    rtColorHandle = RTHandles.Alloc(Vector2.one * settings.quality, colorDesc,
+                    rtColorHandle = RTHandles.Alloc(Vector2.one / ((int)settings.resolution), colorDesc,
                         name: settings.colorTargetDestinationID, 
                         wrapMode: TextureWrapMode.Clamp);
                 }
 
                 if (rtDepthHandle == null)
                 {
-                    rtDepthHandle = RTHandles.Alloc(Vector2.one * settings.quality, depthDest,
+                    rtDepthHandle = RTHandles.Alloc(Vector2.one / ((int)settings.resolution), depthDest,
                         name: settings.colorTargetDestinationID + "_depth", 
                         wrapMode: TextureWrapMode.Clamp);
                 }
@@ -97,7 +97,6 @@ public class PlanarReflection : ScriptableRendererFeature
                 projectionMatrix = GL.GetGPUProjectionMatrix(projectionMatrix, cameraData.IsCameraProjectionMatrixFlipped());
 
                 Matrix4x4 viewMatrix = cameraData.GetViewMatrix();
-                Vector4 cameraTranslation = viewMatrix.GetColumn(3);
                 Vector3 CameraDirection = camera.transform.forward;
 
 
@@ -107,7 +106,7 @@ public class PlanarReflection : ScriptableRendererFeature
                 Matrix4x4 Mf = new Matrix4x4(new Vector4(1,0,0,0),  // XAxis
                                             new Vector4(0,-1,0,0),  // YAxis
                                             new Vector4(0,0,1,0),   // ZAxis
-                                            new Vector4(0,0,0,1));  // Translation and Scale?
+                                            new Vector4(0, settings.planeYPos , 0,1));  // Translation and Scale?
 
                 RenderingUtils.SetViewAndProjectionMatrices(cmd, viewMatrix * Mf, projectionMatrix, false);
 
@@ -160,15 +159,25 @@ public class PlanarReflection : ScriptableRendererFeature
         }
     }
 
+    public enum QualitySettings : int
+    {
+        Full = 1,
+        Half = 2,
+        Quarter = 4,
+        Eight = 8,
+    }
+
     [System.Serializable]
     public class Settings
     {
-        [Header("Settings")]
+        [Tooltip("Should the render texture be updated?")]
         public bool active = true;
+        [Tooltip("World position of the reflection plane")]
+        public float planeYPos = 0.0f;
+        [Header("Render Texture Settings")]
+        public QualitySettings resolution = QualitySettings.Half;
         public LayerMask layerMask = 1;
         public string colorTargetDestinationID = "_PlanarReflection";
-        [Range(0.01f, 1f)]
-        public float quality = 0.5f;
     }
 
     public Settings settings;

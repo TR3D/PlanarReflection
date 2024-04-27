@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_ReflectionShader
+  m_Name: FloorReflection
   m_Shader: {fileID: -6465566751694194690, guid: 118452da0f984784cbd8c88465c1669d,
     type: 3}
   m_Parent: {fileID: 0}
