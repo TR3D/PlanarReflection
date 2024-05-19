@@ -74,8 +74,11 @@ MonoBehaviour:
   m_Active: 1
   settings:
     active: 1
+    planeYPos: 0
+    resolution: 2
     layerMask:
       serializedVersion: 2
       m_Bits: 1
-    colorTargetDestinationID: _PlanarReflection
-    quality: 0.5
+    applyBlur: 1
+    iterations: 3
+    offset: 2.38
