@@ -1,7 +1,7 @@
 # Planar Reflections
 ![image](https://github.com/TR3D/PlanarReflection/assets/63724445/a9f54ac4-9441-4cfa-b020-77348b77ee86)
 
-Simple planar reflections renderer feature for URP. It uses the current viewport camera to render to a Render Texture and blurs the resulting image via dual filtering if desired. 
+Simple planar reflections renderer feature for URP developded with Unity 2022.3. It uses the current viewport camera to render to a Render Texture and blurs the resulting image via dual filtering if desired. 
 
 ## Settings
 ![image](https://github.com/TR3D/PlanarReflection/assets/63724445/10155689-97d2-42e2-b029-f1edb8159f07)
