@@ -13,25 +13,22 @@ Should the render texture be updated?
 Y-position of the reflection plane in world space. Use this if the mirror plane is located at another location than 0.
 
 ### Render Texture Settings
-#### Resolution
+**Resolution**  
 Change the resolution of the reflection texture.
+![Unity_o68h9vm7X6](https://github.com/user-attachments/assets/c796f088-8360-4ed2-9ecd-739b38bf5a27)
 
-#### Layer Mask
+
+**Layer Mask**  
 Change which layer mask should be rendered for the reflection.
 
 ### Blur
-#### Apply Blur
+**Apply Blur**  
 Blur the reflection
-![image](https://github.com/TR3D/PlanarReflection/assets/63724445/5ccb7f39-ef33-4faa-aa5c-a2b0c0b17698)
-![image](https://github.com/TR3D/PlanarReflection/assets/63724445/a1f7a5a6-6542-46b1-adbd-a84d489a51d5)
 
-
-
-#### Iterations
+**Iterations**  
 How many downsample / upsample iterations should be applied?
 
-#### Offset
+**Offset**  
 Increase the blurriness of the reflection.
-![image](https://github.com/TR3D/PlanarReflection/assets/63724445/89e53fce-0bab-4c63-a886-ab5ed6259af7)
-![image](https://github.com/TR3D/PlanarReflection/assets/63724445/913ec350-29f4-43c5-83d8-4a383793e092)
+![Unity_zta00YnDF5](https://github.com/user-attachments/assets/d4264049-bf6d-46ea-afd7-2e8a1a680d68)
 
