@@ -42,7 +42,7 @@ Shader "Hidden/ReflectionBlur"
         half4 fragDownsample(Varyings IN) : SV_Target
         {
             half halfTexel = _BlitTexture_TexelSize * 0.5;             
-            float2 offset = float2(1.0 + _Offset, 1.0 + _Offset) * halfTexel;
+            float2 offset = float2(0.0 + _Offset, 0.0 + _Offset) * halfTexel;
 
             half4 color = SAMPLE_TEXTURE2D(_BlitTexture, sampler_linear_Clamp, IN.texcoord) * 4.0;
             color += SAMPLE_TEXTURE2D(_BlitTexture, sampler_linear_Clamp, (IN.texcoord + offset));
@@ -56,11 +56,12 @@ Shader "Hidden/ReflectionBlur"
         half4 fragUpsample(Varyings IN) : SV_Target
         {
             half halfTexel = _BlitTexture_TexelSize * 0.5; 
-            half offset = float2(1.0 + _Offset, 1.0 + _Offset) * halfTexel;
+            half offset = float2(0.0 + _Offset, 0.0 + _Offset) * halfTexel;
 
             half4 color = SAMPLE_TEXTURE2D(_BlitTexture, sampler_linear_Clamp, (IN.texcoord + float2(-offset * 2.0, 0.0)));
-            color += SAMPLE_TEXTURE2D(_BlitTexture, sampler_linear_Clamp, (IN.texcoord + float2(0.0, offset * 2.0)));
             color += SAMPLE_TEXTURE2D(_BlitTexture, sampler_linear_Clamp, (IN.texcoord + float2(offset * 2.0, 0.0)));
+            color += SAMPLE_TEXTURE2D(_BlitTexture, sampler_linear_Clamp, (IN.texcoord + float2(0.0, offset * 2.0)));
+            color += SAMPLE_TEXTURE2D(_BlitTexture, sampler_linear_Clamp, (IN.texcoord + float2(0.0, -offset * 2.0)));
 
             color += SAMPLE_TEXTURE2D(_BlitTexture, sampler_linear_Clamp, (IN.texcoord + float2(-offset, offset))) * 2.0;
             color += SAMPLE_TEXTURE2D(_BlitTexture, sampler_linear_Clamp, (IN.texcoord + float2(offset, offset))) * 2.0;

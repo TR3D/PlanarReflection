@@ -81,4 +81,4 @@ MonoBehaviour:
       m_Bits: 1
     applyBlur: 1
     iterations: 3
-    offset: 2.38
+    offset: 4
